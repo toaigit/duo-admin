@@ -1,0 +1,34 @@
+Before run the build, ensure the the duo_init.cfg is correct.
+./build.sh
+./start.sh
+
+This is for use with Duo Admin ADAPT
+you need to update the duo_init.cfg with the following content:
+
+.
+├── build.sh
+├── Dockerfile
+├── README.toai
+├── scripts
+│   ├── duo_init.cfg
+│   ├── get_logs.py
+│   ├── get_userinfo.py
+│   ├── list_allusers.py
+│   └── send_activation.py
+└── start.sh
+
+[duo]
+key = DUOKEYWITHADMDQT3UOV
+secret = PPknTxDaF79tKllll4nxtMax7uXXXXX123456789
+host = api-8e506a87.duosecurity.com
+
+Once you are inside the container (run ./start.sh).  You can run the following commands:
+python list_allusers.py 
+    list all the users in the system
+python get_userinfo.py username
+    list device info (phoneno, deviceid)
+python send_activation.py deviceid
+    send text to the deviceid for re-registration.
+python   get_logs.py
+    retreive 1000 lines from log file
+
